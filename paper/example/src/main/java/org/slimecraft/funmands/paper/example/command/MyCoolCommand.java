@@ -21,5 +21,8 @@ public class MyCoolCommand extends PaperCommand {
             ctx.getExecutor().sendMessage(Component.text(person.age()));
             ctx.getExecutor().sendMessage(Component.text(person.favouriteFood()));
         });
+        this.addFormat("brigader example foo:int bar:float baz:person", ctx -> {
+
+        });
     }
 }
