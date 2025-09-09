@@ -1,9 +1,6 @@
 package org.slimecraft.funmands.api.argument;
 
 /**
- */
-
-/**
  * A type-safe way to retrieve arguments. See {@link }
  * @param name
  * @param clazz
