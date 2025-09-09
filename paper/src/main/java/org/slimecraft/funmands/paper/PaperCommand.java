@@ -25,9 +25,9 @@ public class PaperCommand implements Command<PaperFormat> {
         this.formats = new HashSet<>();
     }
 
-    public PaperCommand(String identifier, String... aliases) {
+    public PaperCommand(String identifier) {
         this.identifier = identifier;
-        this.aliases = aliases;
+        this.aliases = new String[]{};
         this.formats = new HashSet<>();
     }
 
