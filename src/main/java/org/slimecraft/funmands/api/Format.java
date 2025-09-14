@@ -21,7 +21,6 @@ public interface Format<S, E> {
 
     /**
      * Get the optional pre-context consumer of the format, which is accepted before the command is executed.
-     * @return
      */
     Optional<Consumer<PreContext<S>>> getPreContextConsumer();
 }
