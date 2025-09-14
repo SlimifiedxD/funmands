@@ -9,3 +9,5 @@ Brigadier allowed for fancy syntax validation on the client-side:
 Brigadier is unnecessarily complex, however. Funmands was created
 to solve this unnecessary complexity and make command creation
 a breeze.
+
+View the wiki to get started and view more info: [Wiki](https://slimecraft.gitbook.io/slimecraft-docs)
