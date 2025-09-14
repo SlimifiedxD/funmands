@@ -7,6 +7,11 @@ plugins {
 group = "org.slimecraft"
 version = "1.0-SNAPSHOT"
 
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
 publishing {
     publications {
         create<MavenPublication>("maven") {
