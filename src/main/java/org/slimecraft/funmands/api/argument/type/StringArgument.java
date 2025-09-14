@@ -6,6 +6,9 @@ import org.slimecraft.funmands.api.argument.Argument;
 public class StringArgument implements Argument<StringArgumentType> {
     @Override
     public StringArgumentType create(Object[] options) {
+        if (options.length == 0) {
+            return StringArgumentType.greedyString();
+        }
         final StringArgumentType.StringType type = (StringArgumentType.StringType) options[0];
         return switch (type) {
             case SINGLE_WORD -> StringArgumentType.word();
