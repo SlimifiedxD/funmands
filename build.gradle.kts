@@ -1,9 +1,23 @@
 plugins {
     kotlin("jvm") version "2.2.0"
+    `java-library`
+    `maven-publish`
 }
 
 group = "org.slimecraft"
 version = "1.0-SNAPSHOT"
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "org.slimecraft"
+            artifactId = "funmands-core"
+            version = "1.0-SNAPSHOT"
+
+            from(components["java"])
+        }
+    }
+}
 
 repositories {
     mavenCentral()
