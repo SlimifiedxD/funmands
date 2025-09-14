@@ -24,7 +24,7 @@ public interface PreContext<S> {
     /**
      * Add a suggestion to an argument identifier.
      */
-    void addSuggestion(String argumentIdentifier, Function<S, Collection<Suggestion>> senderArgumentSuggestions);
+    void addSuggestions(String argumentIdentifier, Function<S, Collection<Suggestion>> senderArgumentSuggestions);
 
     /**
      * Get all suggestions.

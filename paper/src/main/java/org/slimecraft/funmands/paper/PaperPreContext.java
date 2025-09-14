@@ -32,7 +32,7 @@ public class PaperPreContext implements PreContext<CommandSender> {
     }
 
     @Override
-    public void addSuggestion(String argumentIdentifier, Function<CommandSender, Collection<Suggestion>> senderArgumentSuggestions) {
+    public void addSuggestions(String argumentIdentifier, Function<CommandSender, Collection<Suggestion>> senderArgumentSuggestions) {
         this.suggestions.put(argumentIdentifier, senderArgumentSuggestions);
     }
 
