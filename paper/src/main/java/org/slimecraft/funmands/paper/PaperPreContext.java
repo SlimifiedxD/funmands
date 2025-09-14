@@ -8,16 +8,19 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class PaperPreContext implements PreContext<CommandSender> {
     private Predicate<CommandSender> predicate;
     private final Map<String, Function<CommandSender, Collection<Suggestion>>> suggestions;
+    private final Map<String, Function<CommandSender, CompletableFuture<Collection<Suggestion>>>> asyncSuggestions;
     private final Map<String, Object[]> options;
 
     public PaperPreContext() {
         this.suggestions = new HashMap<>();
+        this.asyncSuggestions = new HashMap<>();
         this.options = new HashMap<>();
     }
 
@@ -37,8 +40,18 @@ public class PaperPreContext implements PreContext<CommandSender> {
     }
 
     @Override
+    public void addAsyncSuggestions(String argumentIdentifier, Function<CommandSender, CompletableFuture<Collection<Suggestion>>> senderAsyncArgumentSuggestions) {
+        this.asyncSuggestions.put(argumentIdentifier, senderAsyncArgumentSuggestions);
+    }
+
+    @Override
     public Map<String, Function<CommandSender, Collection<Suggestion>>> getSuggestions() {
         return this.suggestions;
+    }
+
+    @Override
+    public Map<String, Function<CommandSender, CompletableFuture<Collection<Suggestion>>>> getAsyncSuggestions() {
+        return this.asyncSuggestions;
     }
 
     @Override

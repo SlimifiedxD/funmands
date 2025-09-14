@@ -17,7 +17,9 @@ import org.slimecraft.funmands.api.Suggestion;
 import org.slimecraft.funmands.api.argument.ArgumentRegistry;
 
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 public class PaperCommandParser implements CommandParser<PaperCommand, LiteralCommandNode<CommandSourceStack>> {
     private final ArgumentRegistry argumentRegistry;
@@ -53,7 +55,7 @@ public class PaperCommandParser implements CommandParser<PaperCommand, LiteralCo
                 final List<String> argumentNames = new ArrayList<>();
                 ArgumentBuilder<CommandSourceStack, ?> last = null;
 
-                for(int i = lastLength; i >= 0; --i) {
+                for (int i = lastLength; i >= 0; --i) {
                     final String part = parts[i];
                     final ArgumentBuilder<CommandSourceStack, ?> node;
                     if (part.contains(":")) {
@@ -83,7 +85,20 @@ public class PaperCommandParser implements CommandParser<PaperCommand, LiteralCo
                                         });
                                     }
                                 });
-                                return builder.buildFuture();
+                                final Function<CommandSender, CompletableFuture<Collection<Suggestion>>> asyncFn = preContext.getAsyncSuggestions().get(argumentIdentifier);
+
+                                if (asyncFn == null) {
+                                    return CompletableFuture.completedFuture(builder.build());
+                                }
+
+                                return asyncFn.apply(context.getSource().getSender())
+                                        .thenApply(suggestions -> {
+                                            suggestions.forEach((suggestion) -> {
+                                                String suggestionName = suggestion.getName();
+                                                suggestion.getTooltip().ifPresentOrElse((component) -> builder.suggest(suggestionName, MessageComponentSerializer.message().serialize(component)), () -> builder.suggest(suggestionName));
+                                            });
+                                            return builder.build();
+                                        });
                             });
                         });
                     } else {
@@ -103,7 +118,7 @@ public class PaperCommandParser implements CommandParser<PaperCommand, LiteralCo
                             Map<String, Object> argsMap = new HashMap<>();
                             CommandSourceStack source = context.getSource();
 
-                            for(String argumentName : argumentNames) {
+                            for (String argumentName : argumentNames) {
                                 Object gotArgument = context.getArgument(argumentName, Object.class);
                                 argsMap.put(argumentName, gotArgument);
                             }

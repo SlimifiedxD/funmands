@@ -3,6 +3,7 @@ package org.slimecraft.funmands.api;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -27,9 +28,16 @@ public interface PreContext<S> {
     void addSuggestions(String argumentIdentifier, Function<S, Collection<Suggestion>> senderArgumentSuggestions);
 
     /**
+     * Add async suggestions to an argument identifier.
+     */
+    void addAsyncSuggestions(String argumentIdentifier, Function<S, CompletableFuture<Collection<Suggestion>>> senderAsyncArgumentSuggestions);
+
+    /**
      * Get all suggestions.
      */
     Map<String, Function<S, Collection<Suggestion>>> getSuggestions();
+
+    Map<String, Function<S, CompletableFuture<Collection<Suggestion>>>> getAsyncSuggestions();
 
     /**
      * Get the optional predicate to execute this command.
