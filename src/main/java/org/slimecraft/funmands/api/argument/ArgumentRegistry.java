@@ -22,6 +22,7 @@ public final class ArgumentRegistry {
         this.arguments.put("double", new DoubleArgument());
         this.arguments.put("string", new StringArgument());
         this.arguments.put("bool", new BooleanArgument());
+        this.arguments.put("uuid", new UuidArgument());
     }
 
     /**
