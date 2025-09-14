@@ -10,4 +10,4 @@ Brigadier is unnecessarily complex, however. Funmands was created
 to solve this unnecessary complexity and make command creation
 a breeze.
 
-View the wiki to get started and view more info: [Wiki](https://slimecraft.gitbook.io/slimecraft-docs/quick-start)
+View the wiki to get started and view more info: [Wiki](https://slimecraft.gitbook.io/slimecraft-docs)
