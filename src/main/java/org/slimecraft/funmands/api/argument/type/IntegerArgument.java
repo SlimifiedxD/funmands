@@ -33,6 +33,9 @@ public class IntegerArgument implements Argument<IntegerArgumentType> {
 
     @Override
     public IntegerArgumentType create(Object[] options) {
+        if (options.length == 0) {
+            return IntegerArgumentType.integer();
+        }
         final Options intOptions = (Options) options[0];
         final Optional<Integer> optMin = intOptions.getMin();
         final Optional<Integer> optMax = intOptions.getMax();
