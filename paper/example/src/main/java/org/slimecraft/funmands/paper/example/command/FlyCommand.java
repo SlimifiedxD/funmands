@@ -42,7 +42,7 @@ public class FlyCommand extends PaperCommand {
                     TagResolver.resolver("speed",
                             Tag.selfClosingInserting(Component.text(speed)))));
         }, preCtx -> {
-            preCtx.addOptions("speed", new IntegerArgument.Options());
+            preCtx.addOptions("speed", new IntegerArgument.Options(1, 10));
             preCtx.addSuggestions("speed", sender -> {
                 return IntStream.range(1, 11)
                         .mapToObj(value -> {
