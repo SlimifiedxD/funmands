@@ -4,6 +4,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.slimecraft.funmands.api.argument.ArgumentRegistry;
 import org.slimecraft.funmands.paper.PaperFunmandsManager;
 import org.slimecraft.funmands.paper.example.argument.PersonArgument;
+import org.slimecraft.funmands.paper.example.command.FlyCommand;
 import org.slimecraft.funmands.paper.example.command.MyCoolCommand;
 
 public final class FunmandsPaperExamplePlugin extends JavaPlugin {
@@ -15,5 +16,6 @@ public final class FunmandsPaperExamplePlugin extends JavaPlugin {
         argumentRegistry.register("person", new PersonArgument());
 
         funmandsManager.registerCommand(new MyCoolCommand());
+        funmandsManager.registerCommand(new FlyCommand());
     }
 }
