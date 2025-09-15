@@ -3,6 +3,7 @@ package org.slimecraft.funmands.paper;
 import org.bukkit.command.CommandSender;
 import org.slimecraft.funmands.api.PreContext;
 import org.slimecraft.funmands.api.Suggestion;
+import org.slimecraft.funmands.api.argument.ArgumentKey;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -30,8 +31,18 @@ public class PaperPreContext implements PreContext<CommandSender> {
     }
 
     @Override
+    public void addOptions(ArgumentKey<?> key, Object... options) {
+        this.addOptions(key.name(), options);
+    }
+
+    @Override
     public Object[] getOptions(String argumentIdentifier) {
         return this.options.get(argumentIdentifier);
+    }
+
+    @Override
+    public Object[] getOptions(ArgumentKey<?> key) {
+        return this.getOptions(key.name());
     }
 
     @Override
@@ -40,8 +51,18 @@ public class PaperPreContext implements PreContext<CommandSender> {
     }
 
     @Override
+    public void addSuggestions(ArgumentKey<?> key, Function<CommandSender, Collection<Suggestion>> senderArgumentSuggestions) {
+        this.addSuggestions(key.name(), senderArgumentSuggestions);
+    }
+
+    @Override
     public void addAsyncSuggestions(String argumentIdentifier, Function<CommandSender, CompletableFuture<Collection<Suggestion>>> senderAsyncArgumentSuggestions) {
         this.asyncSuggestions.put(argumentIdentifier, senderAsyncArgumentSuggestions);
+    }
+
+    @Override
+    public void addAsyncSuggestions(ArgumentKey<?> key, Function<CommandSender, CompletableFuture<Collection<Suggestion>>> senderAsyncArgumentSuggestions) {
+        this.addAsyncSuggestions(key.name(), senderAsyncArgumentSuggestions);
     }
 
     @Override

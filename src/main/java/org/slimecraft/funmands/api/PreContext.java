@@ -1,5 +1,7 @@
 package org.slimecraft.funmands.api;
 
+import org.slimecraft.funmands.api.argument.ArgumentKey;
+
 import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
@@ -18,9 +20,19 @@ public interface PreContext<S> {
     void addOptions(String argumentIdentifier, Object... options);
 
     /**
+     * Add options to an argument from its key.
+     */
+    void addOptions(ArgumentKey<?> key, Object... options);
+
+    /**
      * Get all options of an argument from its identifier.
      */
     Object[] getOptions(String argumentIdentifier);
+
+    /**
+     * Get all options of an argument from its key.
+     */
+    Object[] getOptions(ArgumentKey<?> key);
 
     /**
      * Add a suggestion to an argument identifier.
@@ -28,9 +40,19 @@ public interface PreContext<S> {
     void addSuggestions(String argumentIdentifier, Function<S, Collection<Suggestion>> senderArgumentSuggestions);
 
     /**
+     * Add suggestions to an argument key.
+     */
+    void addSuggestions(ArgumentKey<?> key, Function<S, Collection<Suggestion>> senderArgumentSuggestions);
+
+    /**
      * Add async suggestions to an argument identifier.
      */
     void addAsyncSuggestions(String argumentIdentifier, Function<S, CompletableFuture<Collection<Suggestion>>> senderAsyncArgumentSuggestions);
+
+    /**
+     * Add async suggestions to an argument key.
+     */
+    void addAsyncSuggestions(ArgumentKey<?> key, Function<S, CompletableFuture<Collection<Suggestion>>> senderAsyncArgumentSuggestions)
 
     /**
      * Get all suggestions.
