@@ -35,7 +35,7 @@ public interface PreContext<S> {
     Object[] getOptions(ArgumentKey<?> key);
 
     /**
-     * Add a suggestion to an argument identifier.
+     * Add suggestions to an argument identifier.
      */
     void addSuggestions(String argumentIdentifier, Function<S, Collection<Suggestion>> senderArgumentSuggestions);
 
