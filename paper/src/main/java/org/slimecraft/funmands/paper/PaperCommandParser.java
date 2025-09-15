@@ -74,6 +74,7 @@ public class PaperCommandParser implements CommandParser<PaperCommand, LiteralCo
                         node = Commands.argument(argumentIdentifier, type);
                         format.getPreContextConsumer().ifPresent((preContextConsumer) -> {
                             preContextConsumer.accept(preContext);
+                            preContext.getPredicate().ifPresent((predicate) -> node.requires((source) -> predicate.test(source.getSender())));
                             RequiredArgumentBuilder<CommandSourceStack, ?> cast = (RequiredArgumentBuilder<CommandSourceStack, ?>) node;
                             cast.suggests((context, builder) -> {
                                 preContext.getSuggestions().forEach((string, commandSenderCollectionFunction) -> {
@@ -109,10 +110,6 @@ public class PaperCommandParser implements CommandParser<PaperCommand, LiteralCo
                         node.then(last);
                     }
 
-                    optPreContextConsumer.ifPresent((preContextConsumer) -> {
-                        preContextConsumer.accept(preContext);
-                        preContext.getPredicate().ifPresent((predicate) -> node.requires((source) -> predicate.test(source.getSender())));
-                    });
                     if (i == lastLength) {
                         node.executes((context) -> {
                             Map<String, Object> argsMap = new HashMap<>();
