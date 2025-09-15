@@ -52,7 +52,7 @@ public interface PreContext<S> {
     /**
      * Add async suggestions to an argument key.
      */
-    void addAsyncSuggestions(ArgumentKey<?> key, Function<S, CompletableFuture<Collection<Suggestion>>> senderAsyncArgumentSuggestions)
+    void addAsyncSuggestions(ArgumentKey<?> key, Function<S, CompletableFuture<Collection<Suggestion>>> senderAsyncArgumentSuggestions);
 
     /**
      * Get all suggestions.
