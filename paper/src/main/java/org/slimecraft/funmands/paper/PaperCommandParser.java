@@ -39,9 +39,10 @@ public class PaperCommandParser implements CommandParser<PaperCommand, LiteralCo
             final Consumer<Context<CommandSender, Entity>> contextConsumer = format.getContextConsumer();
             final Optional<Consumer<PreContext<CommandSender>>> optPreContextConsumer = format.getPreContextConsumer();
             final PaperPreContext preContext = new PaperPreContext();
+            final Map<String, Object> arguments = new HashMap<>();
             if (identifier.isEmpty()) {
                 tree.executes((context) -> {
-                    contextConsumer.accept(new PaperContext(context.getSource(), new HashMap<>()));
+                    contextConsumer.accept(new PaperContext(context.getSource(), arguments));
                     return 1;
                 });
                 optPreContextConsumer.ifPresent((preContextConsumer) -> {
@@ -112,15 +113,14 @@ public class PaperCommandParser implements CommandParser<PaperCommand, LiteralCo
 
                     if (i == lastLength) {
                         node.executes((context) -> {
-                            Map<String, Object> argsMap = new HashMap<>();
                             CommandSourceStack source = context.getSource();
 
                             for (String argumentName : argumentNames) {
                                 Object gotArgument = context.getArgument(argumentName, Object.class);
-                                argsMap.put(argumentName, gotArgument);
+                                arguments.put(argumentName, gotArgument);
                             }
 
-                            contextConsumer.accept(new PaperContext(source, argsMap));
+                            contextConsumer.accept(new PaperContext(source, arguments));
                             return 1;
                         });
                     }
