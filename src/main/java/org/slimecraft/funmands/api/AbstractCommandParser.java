@@ -14,7 +14,13 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public abstract class AbstractCommandParser<S, CS, E, F extends Format<CS, E>, CO extends Context<CS, E>, P extends PreContext<CS>, C extends Command<F>> implements CommandParser<C, LiteralCommandNode<S>> {
+public abstract class AbstractCommandParser<S,
+        CS,
+        E,
+        F extends Format<CS, E>,
+        CO extends Context<CS, E>,
+        P extends PreContext<CS>,
+        C extends Command<F>> implements CommandParser<C, LiteralCommandNode<S>> {
     private final ArgumentRegistry argumentRegistry;
 
     public AbstractCommandParser(ArgumentRegistry argumentRegistry) {
