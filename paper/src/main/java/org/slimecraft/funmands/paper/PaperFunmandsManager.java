@@ -4,6 +4,7 @@ import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.plugin.lifecycle.event.LifecycleEventManager;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
+import org.slimecraft.funmands.api.AbstractFunmandsManager;
 import org.slimecraft.funmands.api.FunmandsManager;
 import org.slimecraft.funmands.api.argument.ArgumentRegistry;
 import org.slimecraft.funmands.api.CommandParser;
@@ -11,15 +12,13 @@ import org.slimecraft.funmands.api.CommandParser;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class PaperFunmandsManager implements FunmandsManager<PaperCommand> {
-    private final ArgumentRegistry argumentRegistry;
+public class PaperFunmandsManager extends AbstractFunmandsManager<PaperCommand> {
     private final LifecycleEventManager<?> lifecycleEventManager;
     private final CommandParser<PaperCommand, LiteralCommandNode<CommandSourceStack>> parser;
 
     public PaperFunmandsManager(LifecycleEventManager<?> lifecycleEventManager) {
-        this.argumentRegistry = new ArgumentRegistry();
         this.lifecycleEventManager = lifecycleEventManager;
-        this.parser = new PaperCommandParser(this.argumentRegistry);
+        this.parser = new PaperCommandParser(this.getArgumentRegistry());
     }
 
     @Override
@@ -32,10 +31,5 @@ public class PaperFunmandsManager implements FunmandsManager<PaperCommand> {
                 event.registrar().register(this.parser.parse(command), aliasesCollection);
             });
         });
-    }
-
-    @Override
-    public ArgumentRegistry getArgumentRegistry() {
-        return this.argumentRegistry;
     }
 }
