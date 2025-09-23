@@ -8,7 +8,7 @@ import java.util.function.Consumer;
  * @param <S> The sender type.
  * @param <E> The executor type.
  */
-public interface Format<S, E> {
+public interface Format<S, E, C extends Context<S, E>, P extends PreContext<S>> {
     /**
      * Get the identifier of the format.
      */
@@ -17,10 +17,10 @@ public interface Format<S, E> {
     /**
      * Get the context consumer of the format, which is accepted after the command is executed.
      */
-    Consumer<Context<S, E>> getContextConsumer();
+    Consumer<C> getContextConsumer();
 
     /**
      * Get the optional pre-context consumer of the format, which is accepted before the command is executed.
      */
-    Optional<Consumer<PreContext<S>>> getPreContextConsumer();
+    Optional<Consumer<P>> getPreContextConsumer();
 }

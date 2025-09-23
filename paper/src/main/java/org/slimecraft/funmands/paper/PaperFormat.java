@@ -11,12 +11,12 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-public class PaperFormat extends AbstractFormat<CommandSender, Entity> {
-    public PaperFormat(String identifier, Consumer<Context<CommandSender, Entity>> contextConsumer) {
+public class PaperFormat extends AbstractFormat<CommandSender, Entity, PaperContext, PaperPreContext> {
+    public PaperFormat(String identifier, Consumer<PaperContext> contextConsumer) {
         super(identifier, contextConsumer);
     }
 
-    public PaperFormat(String identifier, Consumer<Context<CommandSender, Entity>> contextConsumer, Consumer<PreContext<CommandSender>> preContextConsumer) {
+    public PaperFormat(String identifier, Consumer<PaperContext> contextConsumer, Consumer<PaperPreContext> preContextConsumer) {
         super(identifier, contextConsumer, preContextConsumer);
     }
 }

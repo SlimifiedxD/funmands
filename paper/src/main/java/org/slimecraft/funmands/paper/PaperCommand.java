@@ -13,11 +13,12 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
 
-public class PaperCommand extends AbstractCommand<CommandSender,
+public class PaperCommand extends AbstractCommand<
+        CommandSender,
         Entity,
         PaperFormat,
-        Context<CommandSender, Entity>,
-        PreContext<CommandSender>> {
+        PaperContext,
+        PaperPreContext> {
     public PaperCommand(String identifier, String description, String... aliases) {
         super(identifier, description, aliases);
     }
@@ -27,12 +28,12 @@ public class PaperCommand extends AbstractCommand<CommandSender,
     }
 
     @Override
-    public PaperFormat createFormat(String identifier, Consumer<Context<CommandSender, Entity>> contextConsumer) {
+    public PaperFormat createFormat(String identifier, Consumer<PaperContext> contextConsumer) {
         return new PaperFormat(identifier, contextConsumer);
     }
 
     @Override
-    public PaperFormat createFormat(String identifier, Consumer<Context<CommandSender, Entity>> contextConsumer, Consumer<PreContext<CommandSender>> preContextConsumer) {
+    public PaperFormat createFormat(String identifier, Consumer<PaperContext> contextConsumer, Consumer<PaperPreContext> preContextConsumer) {
         return new PaperFormat(identifier, contextConsumer, preContextConsumer);
     }
 }

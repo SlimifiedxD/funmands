@@ -15,9 +15,9 @@ public class PaperCommandParser extends AbstractCommandParser<
         CommandSourceStack,
         CommandSender,
         Entity,
-        PaperFormat,
         PaperContext,
         PaperPreContext,
+        PaperFormat,
         PaperCommand> {
 
     public PaperCommandParser(ArgumentRegistry argumentRegistry) {
