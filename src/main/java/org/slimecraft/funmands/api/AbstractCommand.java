@@ -6,7 +6,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.Consumer;
 
-public abstract class AbstractCommand<S, E, F extends Format<S, E>, C extends Context<S, E>, P extends PreContext<S>> implements Command<C, P, F> {
+public abstract class AbstractCommand<S, E, C extends Context<S, E>, P extends PreContext<S>, F extends Format<S, E, C, P>> implements Command<C, P, F> {
     private final String identifier;
     private String description;
     private final String[] aliases;

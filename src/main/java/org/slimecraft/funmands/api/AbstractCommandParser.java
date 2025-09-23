@@ -41,8 +41,8 @@ public abstract class AbstractCommandParser<S,
         LiteralArgumentBuilder<S> tree = LiteralArgumentBuilder.literal(command.getIdentifier());
         command.getFormats().forEach((format) -> {
             final String identifier = format.getIdentifier();
-            final Consumer<Context<CS, E>> contextConsumer = format.getContextConsumer();
-            final Optional<Consumer<PreContext<CS>>> optPreContextConsumer = format.getPreContextConsumer();
+            final Consumer<CO> contextConsumer = format.getContextConsumer();
+            final Optional<Consumer<P>> optPreContextConsumer = format.getPreContextConsumer();
             final P preContext = this.createPreContext();
             final Map<String, Object> arguments = new HashMap<>();
             if (identifier.isEmpty()) {

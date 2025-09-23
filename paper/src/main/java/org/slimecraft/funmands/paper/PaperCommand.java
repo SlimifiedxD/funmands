@@ -16,9 +16,10 @@ import java.util.function.Consumer;
 public class PaperCommand extends AbstractCommand<
         CommandSender,
         Entity,
-        PaperFormat,
         PaperContext,
-        PaperPreContext> {
+        PaperPreContext,
+        PaperFormat
+        > {
     public PaperCommand(String identifier, String description, String... aliases) {
         super(identifier, description, aliases);
     }
