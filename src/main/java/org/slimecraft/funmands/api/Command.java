@@ -2,11 +2,12 @@ package org.slimecraft.funmands.api;
 
 import java.util.Collection;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 /**
  * A command that can be registered by a {@link FunmandsManager}.
  */
-public interface Command<F extends Format<?, ?>> {
+public interface Command<C extends Context<?, ?>, P extends PreContext<?>, F extends Format<?, ?>> {
     /**
      * Get the identifier of the command.
      */
@@ -26,6 +27,10 @@ public interface Command<F extends Format<?, ?>> {
      * Add a format to the command.
      */
     void addFormat(F format);
+
+    void addFormat(String format, Consumer<C> contextConsumer);
+
+    void addFormat(String format, Consumer<C> contextConsumer, Consumer<P> preContextConsumer);
 
     /**
      * Get all formats of the command.
