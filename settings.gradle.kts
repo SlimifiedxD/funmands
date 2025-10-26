@@ -4,3 +4,4 @@ plugins {
 rootProject.name = "funmands"
 include("paper")
 include("paper:example")
+include("velocity")
