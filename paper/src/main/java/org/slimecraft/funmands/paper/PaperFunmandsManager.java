@@ -8,6 +8,7 @@ import org.slimecraft.funmands.api.AbstractFunmandsManager;
 import org.slimecraft.funmands.api.FunmandsManager;
 import org.slimecraft.funmands.api.argument.ArgumentRegistry;
 import org.slimecraft.funmands.api.CommandParser;
+import org.slimecraft.funmands.paper.argument.type.ItemArgument;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,6 +20,7 @@ public class PaperFunmandsManager extends AbstractFunmandsManager<PaperCommand> 
     public PaperFunmandsManager(LifecycleEventManager<?> lifecycleEventManager) {
         this.lifecycleEventManager = lifecycleEventManager;
         this.parser = new PaperCommandParser(this.getArgumentRegistry());
+        this.getArgumentRegistry().register("item", new ItemArgument());
     }
 
     @Override
