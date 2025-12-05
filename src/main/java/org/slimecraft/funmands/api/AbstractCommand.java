@@ -58,6 +58,14 @@ public abstract class AbstractCommand<S, E, C extends Context<S, E>, P extends P
         this.addFormat(this.createFormat(identifier, contextConsumer, preContextConsumer));
     }
 
+    public void addFormat(FormatIdentifierBuilder builder, Consumer<C> contextConsumer) {
+        this.addFormat(builder.build(), contextConsumer);
+    }
+
+    public void addFormat(FormatIdentifierBuilder builder, Consumer<C> contextConsumer, Consumer<P> preContextConsumer) {
+        this.addFormat(builder.build(), contextConsumer, preContextConsumer);
+    }
+
     @Override
     public Collection<F> getFormats() {
         return this.formats;
