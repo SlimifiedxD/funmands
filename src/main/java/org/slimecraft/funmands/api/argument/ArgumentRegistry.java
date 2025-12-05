@@ -13,16 +13,26 @@ public final class ArgumentRegistry {
      * The mappings from a string to an argument.
      */
     private final Map<String, Argument<?>> arguments;
+    private final Map<Class<?>, String> argumentClasses;
 
-    public ArgumentRegistry() {
+    private ArgumentRegistry() {
         this.arguments = new HashMap<>();
-        this.arguments.put("int", new IntegerArgument());
-        this.arguments.put("float", new FloatArgument());
-        this.arguments.put("long", new LongArgument());
-        this.arguments.put("double", new DoubleArgument());
-        this.arguments.put("string", new StringArgument());
-        this.arguments.put("bool", new BooleanArgument());
-        this.arguments.put("uuid", new UuidArgument());
+        this.argumentClasses = new HashMap<>();
+        this.register("int", new IntegerArgument());
+        this.register("float", new FloatArgument());
+        this.register("long", new LongArgument());
+        this.register("double", new DoubleArgument());
+        this.register("string", new StringArgument());
+        this.register("bool", new BooleanArgument());
+        this.register("uuid", new UuidArgument());
+    }
+
+    private static final class Singleton {
+        public static final ArgumentRegistry INSTANCE = new ArgumentRegistry();
+    }
+
+    public static ArgumentRegistry registry() {
+        return Singleton.INSTANCE;
     }
 
     /**
@@ -30,6 +40,7 @@ public final class ArgumentRegistry {
      */
     public void register(String name, Argument<?> argument) {
         this.arguments.put(name, argument);
+        this.argumentClasses.put(argument.create(new Object[]{}).getClass(), name);
     }
 
     /**
@@ -38,5 +49,9 @@ public final class ArgumentRegistry {
     @SuppressWarnings("unchecked")
     public <T extends Argument<?>> T get(String name) {
         return (T) this.arguments.get(name);
+    }
+
+    public String getArgumentName(Class<?> clazz) {
+        return this.argumentClasses.get(clazz);
     }
 }

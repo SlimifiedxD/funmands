@@ -6,7 +6,7 @@ public abstract class AbstractFunmandsManager<C extends Command<?, ?, ?>> implem
     private final ArgumentRegistry argumentRegistry;
 
     public AbstractFunmandsManager() {
-        this.argumentRegistry = new ArgumentRegistry();
+        this.argumentRegistry = ArgumentRegistry.registry();
     }
 
     @Override
