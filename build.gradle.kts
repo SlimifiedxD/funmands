@@ -12,18 +12,6 @@ java {
     withJavadocJar()
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            groupId = "org.slimecraft"
-            artifactId = "funmands-core"
-            version = "1.0-SNAPSHOT"
-
-            from(components["java"])
-        }
-    }
-}
-
 repositories {
     mavenCentral()
     maven("https://libraries.minecraft.net")
@@ -41,4 +29,16 @@ tasks.test {
 
 kotlin {
     jvmToolchain(21)
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.github.SlimifiedxD"
+            artifactId = "funmands-core"
+            version = "1.0-SNAPSHOT"
+
+            from(components["java"])
+        }
+    }
 }
