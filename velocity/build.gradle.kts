@@ -36,7 +36,7 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = "com.github.SlimifiedxD"
-            artifactId = "funmands-core"
+            artifactId = "funmands-velocity"
             version = "1.0-SNAPSHOT"
 
             from(components["java"])
