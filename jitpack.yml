@@ -6,3 +6,5 @@ before_install:
 
 install:
   - ./gradlew publishToMavenLocal -x test
+
+# PLEASE WORK JITPACK
