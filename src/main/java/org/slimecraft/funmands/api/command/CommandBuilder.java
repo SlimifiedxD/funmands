@@ -6,58 +6,57 @@ import org.slimecraft.funmands.api.PreContext;
 
 import java.util.function.Consumer;
 
-// TODO: make this just take in a command generic to stop this, but i don't want to because i am lazy
-public abstract class CommandBuilder<S, E, C extends Context<S, E>, P extends PreContext<S>, F extends Format<S, E, C, P>> implements IdentifierCommandBuilder<S, E, C, P, F>, OptionalCommandBuilder<S, E, C, P, F> {
+public abstract class CommandBuilder<T extends Command<C, P, F>, S, E, C extends Context<S, E>, P extends PreContext<S>, F extends Format<S, E, C, P>> implements IdentifierCommandBuilder<T, S, E, C, P, F>, OptionalCommandBuilder<T, S, E, C, P, F> {
     private String identifier;
     private String description;
     private String[] aliases = new String[0];
-    private Command<C, P, F> command;
+    private T command;
 
-    protected abstract Command<C, P, F> create(String identifier);
+    protected abstract T create(String identifier);
 
-    protected abstract Command<C, P, F> create(String identifier, String description, String... aliases);
+    protected abstract T create(String identifier, String description, String... aliases);
 
     @Override
-    public OptionalCommandBuilder<S, E, C, P, F> identifier(String identifier) {
+    public OptionalCommandBuilder<T, S, E, C, P, F> identifier(String identifier) {
         this.identifier = identifier;
         command = create(identifier);
         return this;
     }
 
     @Override
-    public OptionalCommandBuilder<S, E, C, P, F> description(String description) {
+    public OptionalCommandBuilder<T, S, E, C, P, F> description(String description) {
         this.description = description;
         command = create(identifier, description, aliases);
         return this;
     }
 
     @Override
-    public OptionalCommandBuilder<S, E, C, P, F> aliases(String... aliases) {
+    public OptionalCommandBuilder<T, S, E, C, P, F> aliases(String... aliases) {
         this.aliases = aliases;
         command = create(identifier, description, aliases);
         return this;
     }
 
     @Override
-    public OptionalCommandBuilder<S, E, C, P, F> addFormat(F format) {
+    public OptionalCommandBuilder<T, S, E, C, P, F> addFormat(F format) {
         command.addFormat(format);
         return this;
     }
 
     @Override
-    public OptionalCommandBuilder<S, E, C, P, F> addFormat(String format, Consumer<C> contextConsumer) {
+    public OptionalCommandBuilder<T, S, E, C, P, F> addFormat(String format, Consumer<C> contextConsumer) {
         command.addFormat(format, contextConsumer);
         return this;
     }
 
     @Override
-    public OptionalCommandBuilder<S, E, C, P, F> addFormat(String format, Consumer<C> contextConsumer, Consumer<P> preContextConsumer) {
+    public OptionalCommandBuilder<T, S, E, C, P, F> addFormat(String format, Consumer<C> contextConsumer, Consumer<P> preContextConsumer) {
         command.addFormat(format, contextConsumer, preContextConsumer);
         return this;
     }
 
     @Override
-    public Command<C, P, F> build() {
+    public T build() {
         return command;
     }
 }
