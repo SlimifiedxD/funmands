@@ -10,12 +10,12 @@ import org.slimecraft.funmands.paper.PaperPreContext;
 
 public class PaperCommandBuilder extends CommandBuilder<CommandSender, Entity, PaperContext, PaperPreContext, PaperFormat> {
     @Override
-    public Command<PaperContext, PaperPreContext, PaperFormat> create(String identifier) {
+    protected Command<PaperContext, PaperPreContext, PaperFormat> create(String identifier) {
         return new PaperCommand(identifier);
     }
 
     @Override
-    public Command<PaperContext, PaperPreContext, PaperFormat> create(String identifier, String description, String... aliases) {
+    protected Command<PaperContext, PaperPreContext, PaperFormat> create(String identifier, String description, String... aliases) {
         return new PaperCommand(identifier, description, aliases);
     }
 }
