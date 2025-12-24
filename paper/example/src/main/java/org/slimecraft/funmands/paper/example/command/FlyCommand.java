@@ -7,7 +7,7 @@ import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.entity.Player;
 import org.slimecraft.funmands.api.Suggestion;
 import org.slimecraft.funmands.api.argument.type.IntegerArgument;
-import org.slimecraft.funmands.paper.PaperCommand;
+import org.slimecraft.funmands.paper.command.PaperCommand;
 
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;

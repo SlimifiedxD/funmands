@@ -6,6 +6,7 @@ import com.velocitypowered.api.command.VelocityBrigadierMessage;
 import net.kyori.adventure.text.Component;
 import org.slimecraft.funmands.api.AbstractCommandParser;
 import org.slimecraft.funmands.api.argument.ArgumentRegistry;
+import org.slimecraft.funmands.velocity.command.VelocityCommand;
 
 import java.util.Map;
 

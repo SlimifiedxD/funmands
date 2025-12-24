@@ -8,6 +8,7 @@ import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import com.mojang.brigadier.tree.LiteralCommandNode;
 import net.kyori.adventure.text.Component;
 import org.slimecraft.funmands.api.argument.ArgumentRegistry;
+import org.slimecraft.funmands.api.command.Command;
 
 import java.util.*;
 import java.util.concurrent.CompletableFuture;

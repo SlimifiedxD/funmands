@@ -1,16 +1,12 @@
-package org.slimecraft.funmands.paper;
+package org.slimecraft.funmands.paper.command;
 
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.slimecraft.funmands.api.AbstractCommand;
-import org.slimecraft.funmands.api.Command;
-import org.slimecraft.funmands.api.Context;
-import org.slimecraft.funmands.api.PreContext;
+import org.slimecraft.funmands.paper.PaperContext;
+import org.slimecraft.funmands.paper.PaperFormat;
+import org.slimecraft.funmands.paper.PaperPreContext;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Set;
 import java.util.function.Consumer;
 
 public class PaperCommand extends AbstractCommand<
@@ -26,6 +22,10 @@ public class PaperCommand extends AbstractCommand<
 
     public PaperCommand(String identifier) {
         super(identifier);
+    }
+
+    public static PaperCommandBuilder builder() {
+        return new PaperCommandBuilder();
     }
 
     @Override

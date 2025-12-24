@@ -3,7 +3,7 @@ package org.slimecraft.funmands.paper.example.command;
 import net.kyori.adventure.text.Component;
 import org.slimecraft.funmands.api.FormatIdentifierBuilder;
 import org.slimecraft.funmands.api.argument.ArgumentKey;
-import org.slimecraft.funmands.paper.PaperCommand;
+import org.slimecraft.funmands.paper.command.PaperCommand;
 import org.slimecraft.funmands.paper.example.argument.Person;
 
 public class MyCoolCommand extends PaperCommand {

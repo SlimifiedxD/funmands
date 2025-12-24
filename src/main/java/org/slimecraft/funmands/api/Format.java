@@ -1,5 +1,7 @@
 package org.slimecraft.funmands.api;
 
+import org.slimecraft.funmands.api.command.Command;
+
 import java.util.Optional;
 import java.util.function.Consumer;
 

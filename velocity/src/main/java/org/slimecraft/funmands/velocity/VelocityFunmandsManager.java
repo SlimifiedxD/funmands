@@ -4,6 +4,7 @@ import com.velocitypowered.api.command.BrigadierCommand;
 import com.velocitypowered.api.command.CommandManager;
 import com.velocitypowered.api.command.CommandMeta;
 import org.slimecraft.funmands.api.AbstractFunmandsManager;
+import org.slimecraft.funmands.velocity.command.VelocityCommand;
 
 public class VelocityFunmandsManager extends AbstractFunmandsManager<VelocityCommand> {
     private final CommandManager commandManager;

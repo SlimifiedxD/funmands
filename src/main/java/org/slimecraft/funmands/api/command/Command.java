@@ -1,4 +1,9 @@
-package org.slimecraft.funmands.api;
+package org.slimecraft.funmands.api.command;
+
+import org.slimecraft.funmands.api.Context;
+import org.slimecraft.funmands.api.Format;
+import org.slimecraft.funmands.api.FunmandsManager;
+import org.slimecraft.funmands.api.PreContext;
 
 import java.util.Collection;
 import java.util.Optional;

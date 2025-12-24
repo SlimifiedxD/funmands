@@ -1,5 +1,7 @@
 package org.slimecraft.funmands.api;
 
+import org.slimecraft.funmands.api.command.Command;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Optional;

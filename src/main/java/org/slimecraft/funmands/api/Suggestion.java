@@ -1,6 +1,7 @@
 package org.slimecraft.funmands.api;
 
 import net.kyori.adventure.text.Component;
+import org.slimecraft.funmands.api.command.Command;
 
 import java.util.Optional;
 

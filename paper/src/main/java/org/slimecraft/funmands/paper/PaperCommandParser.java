@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.slimecraft.funmands.api.*;
 import org.slimecraft.funmands.api.argument.ArgumentRegistry;
+import org.slimecraft.funmands.paper.command.PaperCommand;
 
 import java.util.*;
 

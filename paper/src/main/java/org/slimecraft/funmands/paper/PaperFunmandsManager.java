@@ -5,11 +5,10 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.plugin.lifecycle.event.LifecycleEventManager;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import org.slimecraft.funmands.api.AbstractFunmandsManager;
-import org.slimecraft.funmands.api.FunmandsManager;
-import org.slimecraft.funmands.api.argument.ArgumentRegistry;
 import org.slimecraft.funmands.api.CommandParser;
 import org.slimecraft.funmands.paper.argument.type.ItemArgument;
 import org.slimecraft.funmands.paper.argument.type.PlayerArgument;
+import org.slimecraft.funmands.paper.command.PaperCommand;
 
 import java.util.Arrays;
 import java.util.Collection;

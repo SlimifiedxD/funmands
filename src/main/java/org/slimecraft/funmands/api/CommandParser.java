@@ -1,6 +1,7 @@
 package org.slimecraft.funmands.api;
 
 import com.mojang.brigadier.tree.LiteralCommandNode;
+import org.slimecraft.funmands.api.command.Command;
 
 /**
  * A parser for commands.
