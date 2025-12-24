@@ -26,15 +26,21 @@ public abstract class CommandBuilder<T extends Command<C, P, F>, S, E, C extends
     @Override
     public OptionalCommandBuilder<T, S, E, C, P, F> description(String description) {
         this.description = description;
-        command = create(identifier, description, aliases);
+        handleNewCommand();
         return this;
     }
 
     @Override
     public OptionalCommandBuilder<T, S, E, C, P, F> aliases(String... aliases) {
         this.aliases = aliases;
-        command = create(identifier, description, aliases);
+        handleNewCommand();
         return this;
+    }
+
+    private void handleNewCommand() {
+        T newCommand = create(identifier, description, aliases);
+        command.getFormats().forEach(newCommand::addFormat);
+        command = newCommand;
     }
 
     @Override
