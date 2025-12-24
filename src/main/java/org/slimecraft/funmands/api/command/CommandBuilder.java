@@ -13,9 +13,9 @@ public abstract class CommandBuilder<S, E, C extends Context<S, E>, P extends Pr
     private String[] aliases = new String[0];
     private Command<C, P, F> command;
 
-    public abstract Command<C, P, F> create(String identifier);
+    protected abstract Command<C, P, F> create(String identifier);
 
-    public abstract Command<C, P, F> create(String identifier, String description, String... aliases);
+    protected abstract Command<C, P, F> create(String identifier, String description, String... aliases);
 
     @Override
     public OptionalCommandBuilder<S, E, C, P, F> identifier(String identifier) {

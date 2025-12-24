@@ -3,6 +3,7 @@ package org.slimecraft.funmands.paper.example;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.slimecraft.funmands.api.argument.ArgumentRegistry;
 import org.slimecraft.funmands.paper.PaperFunmandsManager;
+import org.slimecraft.funmands.paper.command.PaperCommand;
 import org.slimecraft.funmands.paper.example.argument.PersonArgument;
 import org.slimecraft.funmands.paper.example.command.FlyCommand;
 import org.slimecraft.funmands.paper.example.command.MyCoolCommand;
