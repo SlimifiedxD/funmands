@@ -2,6 +2,7 @@ package org.slimecraft.funmands.velocity.command;
 
 import com.velocitypowered.api.command.CommandSource;
 import org.slimecraft.funmands.api.AbstractCommand;
+import org.slimecraft.funmands.api.command.IdentifierCommandBuilder;
 import org.slimecraft.funmands.velocity.VelocityContext;
 import org.slimecraft.funmands.velocity.VelocityFormat;
 import org.slimecraft.funmands.velocity.VelocityPreContext;
@@ -24,7 +25,7 @@ public class VelocityCommand extends AbstractCommand<
         super(identifier, description, aliases);
     }
 
-    public static VelocityCommandBuilder builder() {
+    public static IdentifierCommandBuilder<VelocityCommand, CommandSource, CommandSource, VelocityContext, VelocityPreContext, VelocityFormat> builder() {
         return new VelocityCommandBuilder();
     }
 

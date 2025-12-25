@@ -3,6 +3,7 @@ package org.slimecraft.funmands.paper.command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Entity;
 import org.slimecraft.funmands.api.AbstractCommand;
+import org.slimecraft.funmands.api.command.IdentifierCommandBuilder;
 import org.slimecraft.funmands.paper.PaperContext;
 import org.slimecraft.funmands.paper.PaperFormat;
 import org.slimecraft.funmands.paper.PaperPreContext;
@@ -24,7 +25,7 @@ public class PaperCommand extends AbstractCommand<
         super(identifier);
     }
 
-    public static PaperCommandBuilder builder() {
+    public static IdentifierCommandBuilder<PaperCommand, CommandSender, Entity, PaperContext, PaperPreContext, PaperFormat> builder() {
         return new PaperCommandBuilder();
     }
 
